@@ -1,0 +1,40 @@
+<div class="quick_delivery_wrapper">
+<ul>
+{% for block in section.blocks %}
+<li>{% render 'li-chk-icon' %}
+{{block.settings.keyword}} 
+</li>
+{% endfor %}  
+</ul>
+</div>
+{% schema %}
+  {
+    "name": "Quick Delivery",
+    "settings": [
+      {
+        "type": "text",
+        "id": "keyword_tittle",
+        "label": "Title"
+      }
+],
+"blocks": [
+      {
+        "type": "header",
+        "name": "Keyword",
+        "settings": [
+            {
+              "id": "keyword",
+              "type": "text",
+             "label": "keyword"
+            }
+        ]
+      }
+],
+"presets": [
+    {
+      "name": "Quick Delivery",
+      "category": "Advanced layout"
+    }
+  ]
+  }
+{% endschema %}

@@ -1,0 +1,71 @@
+<div class="faqs_wrapper">
+   {%- if section.settings.faqs_tittle != blank -%}
+   <div class="faqs_title"><h2>{{ section.settings.faqs_tittle }}</h2></div>
+   {%- endif -%}
+   {% for block in section.blocks %} 
+   <div class="faqs_row">
+      <button aria-expanded="{% if section.settings.open_first_collapsible_row and forloop.first %}true{% else %}false{% endif %}">
+      <span class="faqs_label">{{block.settings.question}}</span>
+      <span class="arrow" aria-hidden="true">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+      </button>
+      <div class="faqs_content">
+         <p>{{block.settings.answer}}</p>
+      </div>
+   </div>
+   {% endfor %}
+</div>
+
+    
+{% schema %}
+{
+  "name": "Custom FAQs", 
+  "class": "faqs_section",
+  "settings":[
+      {
+         "type":"text",
+         "id":"faqs_tittle",
+         "label":"Frequently Asked Questions Title"
+      },
+      {
+        "type": "checkbox",
+        "id": "open_first_collapsible_row",
+        "default": false,
+        "label": "t:sections.collapsible_content.settings.open_first_collapsible_row.label"
+      }
+   ],
+  "blocks": [
+    {
+      "type": "select",
+      "name": " FAQs",
+      "settings": [
+       {
+          "id": "question",
+          "type": "text",
+          "label": "Question",
+          "default": "lorem ipsum"
+        },
+		{
+          "id": "answer",
+          "type": "richtext",
+          "label": "Answer",
+          "default": "<p>In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before the final copy is available.</p>"
+        }
+      ]
+    }
+  ],
+"presets": [
+{
+"name": "Custom FAQs",
+"blocks": [
+{
+"type": "select"
+}
+]
+}
+]
+}
+{% endschema %}
+
+{% stylesheet %}
+
+{% endstylesheet %}

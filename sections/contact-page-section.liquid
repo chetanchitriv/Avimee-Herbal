@@ -1,0 +1,37 @@
+<div class="contacy_block_section">
+<div class="contact_section_row">
+<ul>
+{% for block in section.blocks %}
+<li>
+{{block.settings.contact_block}}   
+</li>
+{% endfor %}  
+</ul>
+</div>
+</div>
+{% schema %}
+  {
+    "name": "Contact Help",
+    "settings": [
+],
+"blocks": [
+      {
+        "type": "header",
+        "name": "Contact Block",
+        "settings": [
+            {
+              "id": "contact_block",
+              "type": "richtext",
+              "label": "Contact Block"
+            }
+        ]
+      }
+],
+"presets": [
+    {
+      "name": "Contact Help",
+      "category": "Advanced layout"
+    }
+  ]
+  }
+{% endschema %}

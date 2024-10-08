@@ -1,0 +1,77 @@
+<section class="popular_categories_wrapper">
+<div class="title_row">
+<h2>{{section.settings.section_tittle }}</h2>
+</div>
+<ul class="wch_row">
+{% for block in section.blocks %}  
+<li>
+<div class="col">
+<figure>
+{% if block.settings.collection_img == blank %}
+<img src="https://cdn.shopify.com/s/files/1/0715/1812/6317/files/default_collection_img.png?v=1725960895" alt="" loading="lazy" />  
+{% else %} 
+<img src="{{block.settings.collection_img | img_url: '400x'}}" alt="" loading="lazy" />
+{% endif %}
+</figure>
+</div>
+<div class="col">
+<p>{{block.settings.title | escape}}</p>
+<div class="block_button"><a href="{{ block.settings.collection_url | default: "JavaScript:void(0);" }}">{{block.settings.button_title}}</a></div>
+</div>
+</li>
+{% endfor %}
+</ul>
+</section>
+{% schema %}
+{
+  "name": "Popular Categories", 
+  "settings":[
+      {
+         "type":"text",
+         "id":"section_tittle",
+         "label":"Title",
+         "default":"Section Tittle"
+      }
+   ],
+  "blocks": [
+    {
+      "type": "select",
+      "name": " Card",
+      "settings": [
+       {
+		"id": "collection_img",
+		"type": "image_picker",
+		"label": "Image" 
+		},
+        {
+          "id": "title",
+          "type": "text",
+          "label": "Title"
+        },
+        {
+          "id": "button_title",
+          "type": "text",
+          "label": "Button"
+        },
+        {
+          "id": "collection_url",
+          "type": "url",
+          "label": "Collection url"
+        },
+      ]
+    }
+  ],
+"presets": [
+      {
+        "name": "Popular Categories",
+        "category": "ADVANCED LAYOUT",
+        "settings": {
+
+        }
+      }
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}

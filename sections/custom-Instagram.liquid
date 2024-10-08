@@ -1,0 +1,72 @@
+<div class="instagram_section">
+<div class="section_row">
+<div class="title_row"><h2>{{section.settings.tittle}}</h2></div>
+<ul class="instagram_block instagram_slider">
+{% for block in section.blocks %}
+<li>
+{% if block.settings.client-img == blank %}
+<div class="placeholder">&nbsp;</div> 
+{% else %}  
+<img src="{{block.settings.instagram_block | img_url: '500x'}}" alt="{{section.settings.tittle}}" loading="lazy" />
+{% endif %} 
+</li>
+{% endfor %}  
+</ul>
+</div>
+</div>
+{% schema %}
+  {
+    "name": "Instagram Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "tittle",
+        "label": "Page title"
+      }
+],
+"blocks": [
+      {
+        "type": "header",
+        "name": "Instagram Block",
+        "settings": [
+            {
+              "type": "image_picker",
+              "id": "instagram_block",
+             "label": "Instagram Image"
+            }
+        ]
+      }
+],
+"presets": [
+    {
+      "name": "Instagram Section",
+      "category": "Advanced layout"
+    }
+  ]
+  }
+{% endschema %}
+<script>
+$(document).ready(function() {
+$('.instagram_slider').owlCarousel({
+  loop: false,
+  margin: 20,
+  dots: false,
+  nav: true,
+  autoplay:false,
+  autoplayTimeout:2000,
+  autoplayHoverPause:true,
+  navRewind: true,
+  responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:1
+        },
+        1000:{
+            items:4
+        }
+    }
+  })
+})
+</script>

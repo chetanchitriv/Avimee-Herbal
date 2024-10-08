@@ -1,0 +1,63 @@
+<div class="footer_payment_serction">
+<div class="footer_payment_title">
+<h2>{{section.settings.tittle}}</h2>
+<p><img src="{{section.settings.icon | img_url: '50x'}}" alt="{{block.settings.icon}}" loading="lazy" /> {{section.settings.subtittle}}</p>
+</div>
+{% comment %}
+<ul class="payment_card">
+{% for block in section.blocks %}
+<li>
+<img src="{{block.settings.card_image | img_url: '120x'}}" alt="{{block.settings.card_image}}" loading="lazy" />
+</li>
+{% endfor %}  
+</ul>
+{% endcomment %}
+<ul role="list">
+              {%- for type in shop.enabled_payment_types -%}
+                <li class="list-payment__item">
+                  {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                </li>
+              {%- endfor -%}
+            </ul>
+</div>
+{% schema %}
+  {
+    "name": "Payment Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "tittle",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "subtittle",
+        "label": "Subtitle"
+      },
+      {
+        "type": "image_picker",
+        "id": "icon",
+        "label": "Icon"
+      }
+],
+"blocks": [
+      {
+        "type": "header",
+        "name": "Keyword",
+        "settings": [
+            {
+              "id": "card_image",
+              "type": "textarea",
+             "label": "Card"
+            }
+        ]
+      }
+],
+"presets": [
+    {
+      "name": "Payment Section",
+      "category": "Advanced layout"
+    }
+  ]
+  }
+{% endschema %}

@@ -1,0 +1,49 @@
+<section class="keyword_wrapper">
+<ul class="keyword_row">
+{% for block in section.blocks %}
+<li>
+<div class="title">{{block.settings.keyword_title}}</div>
+<div class="description">{{block.settings.keyword_description}}</div>
+</li>
+{% endfor %}
+</ul>
+</section>
+{% schema %}
+{
+  "name": "Footer Keyword", 
+  "settings":[
+
+   ],
+  "blocks": [
+    {
+      "type": "select",
+      "name": " Keyword",
+      "settings": [
+       {
+          "id": "keyword_title",
+          "type": "text",
+          "label": "Keyword Title"
+        },
+        {
+          "id": "keyword_description",
+          "type": "richtext",
+          "label": "Keyword Description"
+        }
+      ]
+    }
+  ],
+"presets": [
+      {
+        "name": "Footer Keyword",
+        "category": "ADVANCED LAYOUT",
+        "settings": {
+
+        }
+      }
+    ]
+}
+{% endschema %}
+
+{% stylesheet %}
+
+{% endstylesheet %}

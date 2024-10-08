@@ -1,0 +1,68 @@
+<div class="happy_customers_wrapper">
+<div class="info_row">
+<div class="col">
+<figure><img src="{{section.settings.client_img | img_url: '90x'}}" alt="{{ section.settings.tittle_h2 }}" loading="lazy" /></figure>
+<div class="info">
+<h2>{{section.settings.tittle_h2}}</h2>
+<p>{{section.settings.customer_p}} </p>
+</div>
+</div>
+<div class="col_poll"><p>{{section.settings.poll_txt}} </p></div>  
+</div>
+<div class="customers_row">
+<ul>
+{% for block in section.blocks %}
+<li>
+<img src="{{block.settings.customer_logo | img_url: '160x'}}" alt="Happy Customers" loading="lazy" />
+</li>
+{% endfor %}  
+</ul>  
+</div>
+</div>
+
+{% schema %}
+  {
+    "name": "Happy Customers",
+    "settings": [
+      {
+        "type": "text",
+        "id": "tittle_h2",
+        "label": "Title"
+      },
+      {
+        "type": "text",
+        "id": "customer_p",
+        "label": "Sub title"
+      },
+      {
+        "type": "text",
+        "id": "poll_txt",
+        "label": "Monthly poll"
+      },
+      {
+        "type": "image_picker",
+        "id": "client_img",
+        "label": "icon"
+      }
+],
+"blocks": [
+      {
+        "type": "header",
+        "name": "Customer",
+        "settings": [
+            {
+              "id": "customer_logo",
+              "type": "image_picker",
+             "label": "Customer Logo"
+            }
+        ]
+      }
+],
+"presets": [
+    {
+      "name": "Happy Customers",
+      "category": "Advanced layout"
+    }
+  ]
+  }
+{% endschema %}
